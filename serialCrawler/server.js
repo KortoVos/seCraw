@@ -5,21 +5,17 @@ var cheerio = require('cheerio');
 var app     = express();
 var analyse = require('./analyse.js');
 var allSerials = require('./allSerials.js');
-const NodeCouchDb = require('node-couchdb');
-const couch = new NodeCouchDb({
-    auth: {
-        user: 'korto',
-        pass: 'qwer1234'
-    }
+
+var MongoClient = require('mongodb').MongoClient;
+
+MongoClient.connect("mongodb://localhost:27017/exampleDb", function(err, db) {
+  if(!err) {
+    console.log("We are connected");
+  }else{
+    console.log("Error: could not connect to Mongo");
+  }
 });
 
-const dbName = 'serials';
-const viewUrl = '_design/nextUpdate/_view/nextUpdate?limit=1'
-
-couch.listDatabases().then(dbs => {
-    //console.log(dbs);
-
-});
 
 app.get('/scrape', function(req, res){
   res.send("startet");
@@ -27,18 +23,13 @@ app.get('/scrape', function(req, res){
 })
 
 function search(){
-  couch.get(dbName, viewUrl).then(({data, headers, status}) => {
-    //res.json(data.rows[0].value);
-    console.log("Start: "+data.rows[0].value.title);
     analyse.getSerial(data.rows[0].value).then(function(result){
-      couch.update(dbName, result).then(({data, headers, status}) => {
         console.log("saved!");
-        search()
-      }, err => {
-      });
+        //search()
+
     }, err => {
+      console.log("error while searching!");
     });
-  });
 }
 
 app.get('/getNewSerials', function(req, res){
