@@ -2,7 +2,7 @@
   "name": "serial_crawler",
   "version": "0.0.1",
   "description": "crawls for serials",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "start": "budo index.js --live"
   },
