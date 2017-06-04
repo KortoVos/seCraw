@@ -71,7 +71,7 @@ app.get('/getNewSerials', function(req, res){
 */
 
 app.get('/', function (req, res) {
-  res.send(mongoURLLabel + " - " + mongoURL);
+  res.send("mongo Stuff:" + mongoURLLabel + " - " + mongoURL);
 });
 
 app.get('/pagecount', function (req, res) {
@@ -84,7 +84,7 @@ app.use(function(err, req, res, next){
 });
 
 var server = app.listen(port, ip, function () {
-  console.log('Server running on http://%s:%s', ip, port);
+  console.log('Server is running on http://%s:%s', ip, port);
 });
 
 
