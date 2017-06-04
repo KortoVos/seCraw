@@ -1,8 +1,10 @@
-var express = require('express');
-var fs = require('fs');
-var request = require('request');
-var cheerio = require('cheerio');
-var app     = express();
+var express = require('express'),
+  fs = require('fs'),
+  request = require('request'),
+  cheerio = require('cheerio'),
+  app     = express(),
+  eps     = require('ejs'),
+  morgan  = require('morgan');
 //var analyse = require('./analyse.js');
 //var allSerials = require('./allSerials.js');
 
@@ -13,6 +15,7 @@ var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 80,
     mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL,
     mongoURLLabel = "";
 
+Object.assign=require('object-assign');
 app.engine('html', require('ejs').renderFile);
 app.use(morgan('combined'));
 
