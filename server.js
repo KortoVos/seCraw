@@ -52,7 +52,7 @@ app.get('/getNewSerials', function(req, res){
 */
 
 app.get('/', function (req, res) {
-  res.send('4 Real ni?');
+  res.send('4 Real never?');
 });
 
 app.get('/pagecount', function (req, res) {
