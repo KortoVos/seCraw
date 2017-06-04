@@ -10,12 +10,6 @@ var express = require('express'),
 
 //var MongoClient = require('mongodb').MongoClient;
 
-Object.assign=require('object-assign');
-
-app.engine('html', require('ejs').renderFile);
-app.use(morgan('combined'));
-
-
 
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 80,
     ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1',
