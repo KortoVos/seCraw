@@ -9,7 +9,11 @@
     "json_merger": "latest",
     "mongodb": "^2.2.27",
     "node-couchdb": "^1.1.1",
-    "request": "latest"
+    "request": "latest",
+    "ejs": "^2.4.1",
+    "mocha": "^2.4.5",
+    "morgan": "^1.7.0",
+    "object-assign":"4.1.0"
   },
   "engine": {
     "node": "*",

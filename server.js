@@ -13,6 +13,8 @@ var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 80,
     mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL,
     mongoURLLabel = "";
 
+app.engine('html', require('ejs').renderFile);
+app.use(morgan('combined'));
 
 /*
 app.get('/scrape', function(req, res){
