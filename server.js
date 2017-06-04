@@ -4,15 +4,14 @@ var request = require('request');
 var cheerio = require('cheerio');
 var app     = express();
 //var analyse = require('./analyse.js');
-var allSerials = require('./allSerials.js');
+//var allSerials = require('./allSerials.js');
 
-var MongoClient = require('mongodb').MongoClient;
+//var MongoClient = require('mongodb').MongoClient;
 
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 80,
     ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1',
     mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL,
     mongoURLLabel = "";
-
 
 
 /*
@@ -52,6 +51,11 @@ app.get('/getNewSerials', function(req, res){
 
 app.get('/', function (req, res) {
   res.send('Welcome to teh grap');
+});
+
+app.use(function(err, req, res, next){
+  console.error(err.stack);
+  res.status(500).send('Something bad happened!');
 });
 
 var server = app.listen(port, ip, function () {
