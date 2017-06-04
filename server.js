@@ -2,9 +2,7 @@ var express = require('express'),
   fs = require('fs'),
   request = require('request'),
   cheerio = require('cheerio'),
-  app     = express(),
-  eps     = require('ejs'),
-  morgan  = require('morgan');
+  app     = express();
 //var analyse = require('./analyse.js');
 //var allSerials = require('./allSerials.js');
 
@@ -54,7 +52,7 @@ app.get('/getNewSerials', function(req, res){
 */
 
 app.get('/', function (req, res) {
-  res.send('Welcome to teh grap 111');
+  res.send('4 Real ni?');
 });
 
 app.get('/pagecount', function (req, res) {
