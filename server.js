@@ -57,3 +57,6 @@ app.get('/', function (req, res) {
 var server = app.listen(port, ip, function () {
   console.log('Server running on http://%s:%s', ip, port);
 });
+
+
+module.exports = app ;
