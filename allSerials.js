@@ -8,7 +8,7 @@ module.exports = {
 function getAllSerials(url){
 	return new Promise((resolve, reject) => {
 
-		let promisesArray = [];
+		var promisesArray = [];
 	  	var serials = {};
 	  	console.log("Test123: "+url);
 	    request(url, function(error, response, html){
@@ -17,8 +17,8 @@ function getAllSerials(url){
 
 		    	$('#seriesContainer').find('a').map(
 			  	function(i, el) {
-			  		let singlePromise = new Promise((resolve, reject) => {
-			  			let serial = {};
+			  		var singlePromise = new Promise((resolve, reject) => {
+			  			var serial = {};
 			  			serial.url 	="https://bs.to/"+$(this).attr("href");
 	        			serial.title=$(this).text();
 	        			serial.latestCheck=	Math.round(Math.random()*1000);

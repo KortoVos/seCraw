@@ -9,15 +9,15 @@ module.exports = {
 
 function getSeason($){
 	return new Promise((resolve, reject) => {
-		let promisesArray = [];
+		var promisesArray = [];
 
-	    let activSeason = 1;
+	    var activSeason = 1;
 		try{
-			let activSeason = $('.active').children().first().attr("href").split('/')[2];
+			var activSeason = $('.active').children().first().attr("href").split('/')[2];
 		}catch(err){}
 	    $('#seasons').find('li').map(
 	    	function(i, el) { 
-				let singlePromise = new Promise((resolve, reject) => {
+				var singlePromise = new Promise((resolve, reject) => {
 					var season = {};
 					season.nr = $(this).text();
 					season.latestCheck=	Date.now();

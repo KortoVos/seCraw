@@ -4,7 +4,7 @@ module.exports = {
 }
 
 function getUploadLink($){
-	let upLink = {};
+	var upLink = {};
 	if($('table').hasClass('episodes')){
 		upLink = getUploadLinkWhenSeUrl($);
 	}else{
@@ -18,7 +18,7 @@ function getUploadLinkWhenSeUrl($){ //Gets called when the craped link goes to t
 	return(
 		$('.episodes').find('tr').map(
 		  	function(i, el) {
-		  		let episode = {};
+		  		var episode = {};
 			  	episode.nr = $(this).children().first().text();
 			  	episode.latestCheck=Date.now();
 			  	episode.DEName = $(this).children().next().children().first().children('strong').text();
@@ -35,7 +35,7 @@ function getUploadLinkWhenEpUrl($){ //Gets called when the craped link goes to t
 	return(
 		$(this).find('.v-centered').map(
 		  	function(i, el) {
-			  	let upLink = {};
+			  	var upLink = {};
 				//upLink.url = .attr('href');
 			  	return upLink;
 			}
