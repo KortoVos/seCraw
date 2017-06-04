@@ -51,7 +51,7 @@ app.get('/getNewSerials', function(req, res){
 */
 
 app.get('/', function (req, res) {
-  res.send('Welcome');
+  res.send('Welcome to teh grap');
 });
 
 var server = app.listen(port, ip, function () {
