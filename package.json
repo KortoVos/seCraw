@@ -1,0 +1,23 @@
+{
+  "name": "serial_crawler",
+  "version": "0.0.1",
+  "description": "crawls for serials",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "crawl",
+    "serial"
+  ],
+  "dependencies": {
+    "cheerio": "latest",
+    "express": "latest",
+    "json_merger": "latest",
+    "mongodb": "^2.2.27",
+    "node-couchdb": "^1.1.1",
+    "request": "latest"
+  },
+  "author": "KV",
+  "license": "ISC"
+}
