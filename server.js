@@ -3,7 +3,7 @@ var fs = require('fs');
 var request = require('request');
 var cheerio = require('cheerio');
 var app     = express();
-var analyse = require('./analyse.js');
+//var analyse = require('./analyse.js');
 var allSerials = require('./allSerials.js');
 
 var MongoClient = require('mongodb').MongoClient;
@@ -49,6 +49,10 @@ app.get('/getNewSerials', function(req, res){
   });
 })
 */
+
+app.get('/', function (req, res) {
+  res.send('Welcome');
+});
 
 var server = app.listen(port, ip, function () {
   console.log('Server running on http://%s:%s', ip, port);
