@@ -10,14 +10,19 @@ var express = require('express'),
 
 //var MongoClient = require('mongodb').MongoClient;
 
+Object.assign=require('object-assign');
+
+app.engine('html', require('ejs').renderFile);
+app.use(morgan('combined'));
+
+
+
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 80,
     ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1',
     mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL,
     mongoURLLabel = "";
 
-Object.assign=require('object-assign');
-app.engine('html', require('ejs').renderFile);
-app.use(morgan('combined'));
+
 
 /*
 app.get('/scrape', function(req, res){
@@ -56,6 +61,10 @@ app.get('/getNewSerials', function(req, res){
 
 app.get('/', function (req, res) {
   res.send('Welcome to teh grap 111');
+});
+
+app.get('/pagecount', function (req, res) {
+  res.send('{ pageCount: -1 }');
 });
 
 app.use(function(err, req, res, next){
