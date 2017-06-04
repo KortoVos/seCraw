@@ -2,9 +2,9 @@ var express = require('express'),
   fs = require('fs'),
   request = require('request'),
   cheerio = require('cheerio'),
-  app     = express(),
+  app     = express()/*,
   analyse = require('./analyse.js'),
-  allSerials = require('./allSerials.js');
+  allSerials = require('./allSerials.js')*/;
 
 //var MongoClient = require('mongodb').MongoClient;
 
@@ -14,7 +14,7 @@ var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 80,
     mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL,
     mongoURLLabel = "";
 
-/*
+
 if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
   var mongoServiceName = process.env.DATABASE_SERVICE_NAME.toUpperCase(),
       mongoHost = process.env[mongoServiceName + '_SERVICE_HOST'],
@@ -34,7 +34,7 @@ if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
 
   }
 }
-*/
+
 /*
 app.get('/scrape', function(req, res){
   res.send("startet");
