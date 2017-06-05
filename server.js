@@ -35,6 +35,30 @@ if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
   }
 }
 
+var db = null,
+    dbDetails = new Object();
+
+var initDb = function(callback) {
+  if (mongoURL == null) return;
+
+  var mongodb = require('mongodb');
+  if (mongodb == null) return;
+
+  mongodb.connect(mongoURL, function(err, conn) {
+    if (err) {
+      callback(err);
+      return;
+    }
+
+    db = conn;
+    dbDetails.databaseName = db.databaseName;
+    dbDetails.url = mongoURLLabel;
+    dbDetails.type = 'MongoDB';
+
+    console.log('Connected to MongoDB at: %s', mongoURL);
+  });
+};
+
 /*
 app.get('/scrape', function(req, res){
   res.send("startet");
@@ -71,8 +95,20 @@ app.get('/getNewSerials', function(req, res){
 */
 
 app.get('/', function (req, res) {
-  res.send("mongo test");
+  //res.send("mongo test");
   console.log('Mongo is running on http://%s  -  %s', mongoURL, mongoURLLabel);
+
+  if (!db) {
+    initDb(function(err){});
+  }
+  if (db) {
+    db.collection('counts').count(function(err, count ){
+      res.send('{ pageCount: ' + count + '}');
+    });
+  } else {
+    res.send('{ pageCount: -1 }');
+  }
+
 });
 
 app.get('/pagecount', function (req, res) {
