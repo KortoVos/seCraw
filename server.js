@@ -2,9 +2,9 @@ var express = require('express'),
   fs = require('fs'),
   request = require('request'),
   cheerio = require('cheerio'),
-  app     = express()/*,
+  app     = express(),
   analyse = require('./analyse.js'),
-  allSerials = require('./allSerials.js')*/;
+  allSerials = require('./allSerials.js');
 
 //var MongoClient = require('mongodb').MongoClient;
 
@@ -72,7 +72,7 @@ app.get('/getNewSerials', function(req, res){
 
 app.get('/', function (req, res) {
   res.send("mongo test");
-  console.log('Mongo is running on http://%s:%s', mongoURL, mongoURLLabel);
+  console.log('Mongo is running on http://%s  -  %s', mongoURL, mongoURLLabel);
 });
 
 app.get('/pagecount', function (req, res) {
