@@ -102,6 +102,10 @@ app.get('/', function (req, res) {
     initDb(function(err){});
   }
   if (db) {
+    var col = db.collection('counts');
+    // Create a document with request IP and current time of request
+    col.insert({ip: req.ip, date: Date.now()});
+    
     db.collection('counts').count(function(err, count ){
       res.send('{ pageCount: ' + count + '}');
     });
