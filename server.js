@@ -74,25 +74,27 @@ function search(){
       console.log("error while searching!");
     });
 }
-
+*/
 app.get('/getNewSerials', function(req, res){
   url = 'https://bs.to/andere-serien';
-  
+  if (!db) {
+    initDb(function(err){});
+  }
+
   allSerials.getAllSerials(url).then(function(result){
     //fs.writeFile('test.json', JSON.stringify(result, null, 4));
     res.json(result);
     result.map((el,i) => { 
       setTimeout(function() {
         console.log(el );
-        couch.uniqid().then(function(ids){
-          couch.insert(dbName,el)
-        });
+        var col = db.collection('serials');
+        col.insert(el);
       },(Math.random()*10000))
     });
 
   });
 })
-*/
+
 
 app.get('/', function (req, res) {
   //res.send("mongo test");
@@ -105,7 +107,7 @@ app.get('/', function (req, res) {
     var col = db.collection('counts');
     // Create a document with request IP and current time of request
     col.insert({ip: req.ip, date: Date.now()});
-    
+
     db.collection('counts').count(function(err, count ){
       res.send('{ pageCount: ' + count + '}');
     });
