@@ -130,6 +130,21 @@ app.get('/pagecount', function (req, res) {
   }
 });
 
+
+app.get('/serialsdb', function (req, res) {
+  if (!db) {
+    initDb(function(err){});
+  }
+  if (db) {
+    db.collection('serials').find({}).toArray(function(err, results){
+      res.send(results); // output all records
+    });
+  } else {
+    res.send('{connection error }');
+  }
+  
+});
+
 app.use(function(err, req, res, next){
   console.error(err.stack);
   res.status(500).send('Something bad happened!');
