@@ -20,7 +20,7 @@ function getAllSerials(url){
 			  		var singlePromise = new Promise((resolve, reject) => {
 			  			var serial = {};
 			  			serial.url 	="https://bs.to/"+$(this).attr("href");
-	        			serial.title=$(this).text();
+	        			serial.title="_" + $(this).text();
 	        			serial.latestCheck=	Math.round(Math.random()*1000);
 			  			resolve(serial);
 			  		});
