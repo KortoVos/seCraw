@@ -6,6 +6,8 @@ var express = require('express'),
   analyse = require('./analyse.js'),
   allSerials = require('./allSerials.js');
 
+var searchMode = 0;
+
 //var MongoClient = require('mongodb').MongoClient;
 
 
@@ -59,22 +61,33 @@ var initDb = function(callback) {
   });
 };
 
-/*
+
 app.get('/scrape', function(req, res){
   res.send("startet");
   search();
 })
 
 function search(){
-    analyse.getSerial(data.rows[0].value).then(function(result){
-        console.log("saved!");
-        //search()
+  if (!db) {
+    initDb(function(err){});
+  }
+  if (db) {
+    var col = db.collection('counts');
+    col.find({}, {limit:1}).sort({latestCheck:1}).toArray(function(err, result) {
+      console.log("searching: %s",result.rows[0].value);
+      /*analyse.getSerial(result.rows[0].value).then(function(result){
+          console.log("saved!");
+          //search()
 
-    }, err => {
-      console.log("error while searching!");
+      }, err => {
+        console.log("error while searching!");
+      });*/
     });
+  }else {
+    res.send('Mongo connection error');
+  }
 }
-*/
+
 app.get('/getNewSerials', function(req, res){
   url = 'https://bs.to/andere-serien';
   if (!db) {
