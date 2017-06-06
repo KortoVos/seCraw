@@ -76,6 +76,8 @@ function search(){
     col.find({}, {limit:1}).sort({latestCheck:1}).toArray(function(err, result) {
       try{
         console.log("searching: %s",JSON.parse(JSON.stringify(result[0])));
+        console.log("searching length: %s",result.length);
+        console.log("searching url: %s",result[0].url);
       }catch (err) {
         try{
           console.log("searching length: %s",result.length);
