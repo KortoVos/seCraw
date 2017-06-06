@@ -75,9 +75,9 @@ function search(){
     var col = db.collection('counts');
     col.find({}, {limit:1}).sort({latestCheck:1}).toArray(function(err, result) {
       try{
-        console.log("searching: %s",JSON.parse(JSON.stringify(result[0])));
+        console.log("searching: %s",JSON.parse(JSON.stringify(result[0].value)));
         console.log("searching length: %s",result.length);
-        console.log("searching url: %s",result[0].url);
+        console.log("searching url: %s",result[0].value.url);
       }catch (err) {
         try{
           console.log("searching length: %s",result.length);
@@ -109,7 +109,7 @@ app.get('/getNewSerials', function(req, res){
     res.json(result);
     result.map((el,i) => { 
       setTimeout(function() {
-        console.log(el );
+        //console.log(el );
         var col = db.collection('serials');
         col.insert(el);
       },(Math.random()*10000))
