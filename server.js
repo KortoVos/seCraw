@@ -72,8 +72,8 @@ function search(){
     initDb(function(err){});
   }
   if (db) {
-    var col = db.collection('counts');
-    col.find({}, {limit:1}).sort({latestCheck:1}).toArray(function(err, result) {
+    var col = db.collection('serials');
+    col.findOne({}, {limit:1}).sort({latestCheck:1}).toArray(function(err, result) {
       try{
         console.log("searching: %s",JSON.parse(JSON.stringify(result[0].value)));
       }catch (err) {console.log("error: json object"); }
@@ -86,6 +86,9 @@ function search(){
       }catch (err) {console.log("error: length"); }
       try{
         console.log("searching url: %s",result[0].value.url);
+      }catch (err) {console.log("error: url"); }
+      try{
+        console.log("searching url2: %s",result[0].url);
       }catch (err) {console.log("error: url"); }
       try{
         console.log("searching url: %s",result[0]);
