@@ -73,7 +73,7 @@ function search(){
   }
   if (db) {
     var col = db.collection('serials');
-    col.findOne({}, {limit:1}).sort({latestCheck:1}).toArray(function(err, result) {
+    col.find({}, {limit:1}).sort({latestCheck:1}).toArray(function(err, result) {
       try{
         console.log("searching: %s",JSON.parse(JSON.stringify(result[0].value)));
       }catch (err) {console.log("error: json object"); }
