@@ -75,9 +75,13 @@ function search(){
     var col = db.collection('counts');
     col.find({}, {limit:1}).sort({latestCheck:1}).toArray(function(err, result) {
       try{
-        console.log("searching: %s",result);
+        console.log("searching: %s",JSON.parse(JSON.stringify(result[0])));
       }catch (err) {
-        console.log("searching: ...");
+        try{
+          console.log("searching length: %s",result.length);
+        }catch (err) {
+          console.log("searching: ...");
+        }
       }
       /*analyse.getSerial(result.rows[0].value).then(function(result){
           console.log("saved!");
