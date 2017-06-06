@@ -127,7 +127,7 @@ app.get('/', function (req, res) {
   if (db) {
     var col = db.collection('serials');
     col.find({}).sort({latestCheck:1}).toArray(function(err, result) {
-      console.dir(result);
+      res.send(result);
     });
   }
 
