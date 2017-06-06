@@ -81,7 +81,19 @@ function search(){
         col.findAndModify(
           {_id: result[0]._id}, // query
           [['_id','asc']],  // sort order
-          {$set: {latestCheck: res.latestCheck}}, // replacement, replaces only the field "hi"
+          {$set: {
+              latestCheck: res.latestCheck,
+              description: res.description,
+              genres:res.genres,
+              release:res.release,
+              actors:res.actors,
+              producer:res.producer,
+              director:res.director,
+              author:res.author,
+              img:res.img,
+              seasons:res.seasons
+            }
+          }, // replacement, replaces only the field "hi"
           {}, // options
           function(err, object) {
               if (err){
