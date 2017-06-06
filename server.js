@@ -102,7 +102,7 @@ function search(){
                 }else{
                    console.dir(object);
                 }
-                search()
+                search();
               },(Math.random()*10000))
               
           }
