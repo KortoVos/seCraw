@@ -8,6 +8,8 @@ module.exports = {
 
 function getSerial(serial){
 	return new Promise((resolve, reject) => {
+		console.log("start with Serial:");
+		console.dir(serial);
   	//var serial = {};
     request(serial.url, function(error, response, html){
 	    if(!error){
