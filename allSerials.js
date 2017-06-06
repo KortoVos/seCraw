@@ -19,8 +19,9 @@ function getAllSerials(url){
 			  	function(i, el) {
 			  		var singlePromise = new Promise((resolve, reject) => {
 			  			var serial = {};
+			  			serial._id= $(this).text();
 			  			serial.url 	="https://bs.to/"+$(this).attr("href");
-	        			serial._title= $(this).text();
+	        			serial.title= $(this).text();
 	        			serial.latestCheck=	Math.round(Math.random()*1000);
 			  			resolve(serial);
 			  		});
