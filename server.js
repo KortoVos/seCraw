@@ -74,33 +74,20 @@ function search(){
   if (db) {
     var col = db.collection('serials');
     col.find({}, {limit:1}).sort({latestCheck:1}).toArray(function(err, result) {
-      try{
-        console.log("searching: %s",JSON.parse(JSON.stringify(result[0].value)));
-      }catch (err) {console.log("error: json object"); }
-      try{
-        try{
-        console.log("searching: %s",JSON.parse(result[0]));
-      }catch (err) {console.log("error: json2 object"); }
-
-        console.log("searching length: %s",result.length);
-      }catch (err) {console.log("error: length"); }
-      try{
-        console.log("searching url: %s",result[0].value.url);
-      }catch (err) {console.log("error: url"); }
-      try{
-        console.log("searching url2: %s",result[0].url);
-      }catch (err) {console.log("error: url"); }
-      try{
-        console.log("searching url: %s",result[0]);
-      }catch (err) {console.log("error: object"); }
+      console.log("searching url2: %s",result[0].url);
       
-      /*analyse.getSerial(result.rows[0].value).then(function(result){
+      analyse.getSerial(result[0]).then(function(res){
           console.log("saved!");
           //search()
+          try{
+          console.log("searching: %s",JSON.parse(JSON.stringify(res)));
+          }catch(err){
+            console.log("error json res")
+          }
 
       }, err => {
         console.log("error while searching!");
-      });*/
+      });
     });
   }else {
     res.send('Mongo connection error');
