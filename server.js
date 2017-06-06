@@ -78,10 +78,10 @@ function search(){
       
       analyse.getSerial(result[0]).then(function(res){
         console.dir(res);
-        /*col.findAndModify(
-          {_title: result[0]._title}, // query
-          [['_title','asc']],  // sort order
-          {$set: {hi: 'there'}}, // replacement, replaces only the field "hi"
+        col.findAndModify(
+          {_id: result[0]._id}, // query
+          [['_id','asc']],  // sort order
+          {$set: {latestCheck: res.latestCheck},{description:res.description}}, // replacement, replaces only the field "hi"
           {}, // options
           function(err, object) {
               if (err){
@@ -89,7 +89,7 @@ function search(){
               }else{
                   console.dir(object);
               }
-          });*/
+          });
       }, err => {
         console.log("error while searching!");
       });
@@ -139,6 +139,7 @@ app.get('/delAll', function (req, res) {
   if (db) {
     var col = db.collection('serials');
     col.remove({},function(err, removed){
+      res.send("dell all");
     });
   }
 });
