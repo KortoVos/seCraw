@@ -130,25 +130,17 @@ app.get('/', function (req, res) {
       res.send(result);
     });
   }
+});
 
-  //res.send("mongo test");
-  /*console.log('Mongo is running on http://%s  -  %s', mongoURL, mongoURLLabel);
-
+app.get('/delAll', function (req, res) {
   if (!db) {
     initDb(function(err){});
   }
   if (db) {
-    var col = db.collection('counts');
-    // Create a document with request IP and current time of request
-    col.insert({ip: req.ip, date: Date.now()});
-
-    db.collection('counts').count(function(err, count ){
-      res.send('{ pageCount: ' + count + '}');
+    var col = db.collection('serials');
+    col.remove({},function(err, removed){
     });
-  } else {
-    res.send('{ pageCount: -2 }');
-  }*/
-
+  }
 });
 
 app.get('/pagecount', function (req, res) {
