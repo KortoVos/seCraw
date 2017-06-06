@@ -76,15 +76,21 @@ function search(){
     col.find({}, {limit:1}).sort({latestCheck:1}).toArray(function(err, result) {
       try{
         console.log("searching: %s",JSON.parse(JSON.stringify(result[0].value)));
-        console.log("searching length: %s",result.length);
-        console.log("searching url: %s",result[0].value.url);
-      }catch (err) {
+      }catch (err) {console.log("error: json object"); }
+      try{
         try{
-          console.log("searching length: %s",result.length);
-        }catch (err) {
-          console.log("searching: ...");
-        }
-      }
+        console.log("searching: %s",JSON.parse(result[0]));
+      }catch (err) {console.log("error: json2 object"); }
+
+        console.log("searching length: %s",result.length);
+      }catch (err) {console.log("error: length"); }
+      try{
+        console.log("searching url: %s",result[0].value.url);
+      }catch (err) {console.log("error: url"); }
+      try{
+        console.log("searching url: %s",result[0]);
+      }catch (err) {console.log("error: object"); }
+      
       /*analyse.getSerial(result.rows[0].value).then(function(result){
           console.log("saved!");
           //search()
