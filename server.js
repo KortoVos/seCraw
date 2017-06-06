@@ -121,8 +121,18 @@ app.get('/getNewSerials', function(req, res){
 
 
 app.get('/', function (req, res) {
+  if (!db) {
+    initDb(function(err){});
+  }
+  if (db) {
+    var col = db.collection('serials');
+    col.find({}).sort({latestCheck:1}).toArray(function(err, result) {
+      console.dir(result);
+    });
+  }
+
   //res.send("mongo test");
-  console.log('Mongo is running on http://%s  -  %s', mongoURL, mongoURLLabel);
+  /*console.log('Mongo is running on http://%s  -  %s', mongoURL, mongoURLLabel);
 
   if (!db) {
     initDb(function(err){});
@@ -137,7 +147,7 @@ app.get('/', function (req, res) {
     });
   } else {
     res.send('{ pageCount: -2 }');
-  }
+  }*/
 
 });
 
