@@ -74,7 +74,7 @@ function search(){
   if (db) {
     var col = db.collection('counts');
     col.find({}, {limit:1}).sort({latestCheck:1}).toArray(function(err, result) {
-      console.log("searching: %s",result.rows[0].value);
+      console.log("searching: %s",result);
       /*analyse.getSerial(result.rows[0].value).then(function(result){
           console.log("saved!");
           //search()
