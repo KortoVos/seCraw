@@ -10,7 +10,7 @@ function getAllSerials(url){
 
 		var promisesArray = [];
 	  	var serials = {};
-	  	console.log("Test123: "+url);
+	  	//console.log("Test123: "+url);
 	    request(url, function(error, response, html){
 		    if(!error){
 		    	var $ = cheerio.load(html);
@@ -20,7 +20,7 @@ function getAllSerials(url){
 			  		var singlePromise = new Promise((resolve, reject) => {
 			  			var serial = {};
 			  			serial.url 	="https://bs.to/"+$(this).attr("href");
-	        			serial._title= $(this).text();
+	        			serial.title= $(this).text();
 	        			serial.latestCheck=	Math.round(Math.random()*1000);
 			  			resolve(serial);
 			  		});
@@ -28,7 +28,7 @@ function getAllSerials(url){
 			  	});
 			}
 			Promise.all(promisesArray).then((result) => {
-		    	console.log(result);
+		    	console.log("found %s serials",result.length);
 		    	resolve(result);
 			});
 		});
