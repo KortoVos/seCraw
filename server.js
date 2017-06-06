@@ -77,20 +77,25 @@ function search(){
       console.log("searching url2: %s",result[0].url);
       
       analyse.getSerial(result[0]).then(function(res){
-          console.log("saved!");
-          //search()
-          try{
-          console.log("searching: %s",JSON.parse(JSON.stringify(res)));
-          }catch(err){
-            console.log("error json res")
-          }
-
+        console.dir(res);
+        /*col.findAndModify(
+          {_title: result[0]._title}, // query
+          [['_title','asc']],  // sort order
+          {$set: {hi: 'there'}}, // replacement, replaces only the field "hi"
+          {}, // options
+          function(err, object) {
+              if (err){
+                  console.warn(err.message);  // returns error if no matching object found
+              }else{
+                  console.dir(object);
+              }
+          });*/
       }, err => {
         console.log("error while searching!");
       });
     });
   }else {
-    res.send('Mongo connection error');
+    console.log('Mongo connection error');
   }
 }
 
