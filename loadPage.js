@@ -17,6 +17,7 @@ function getSiteMultiTry(url,tryNr){
 	return new Promise((resolve, reject) => {
 		if(tryNr > 0){
 			setTimeout(function() {
+				console.log("request: "+url);
 				request(url, function(error, response, html){
 				    if(!error){
 				    	var $ = cheerio.load(html);
