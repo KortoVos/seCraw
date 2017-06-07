@@ -3,8 +3,7 @@ var cheerio = require('cheerio');
 var pageLoader= require('./loadPage.js');
 
 module.exports = {
-	getEpisodes:getEpisodes,
-	getEpisodesByUrl:getEpisodesByUrl
+	getEpisodes:getEpisodes
 }
 
 function getEpisodes($){
@@ -109,20 +108,4 @@ function getEpisodesWhenEpUrl($){ //Gets called when the craped link goes to the
 		    resolve(result);
 		});
 	});
-}
-
-function getEpisodesByUrl(url){
-  return new Promise((resolve, reject) => {
-  	setTimeout(function() {
-    request(url, function(error, response, html){
-	  if(!error){
-	  	var $ = cheerio.load(html);
-	  	var epis = getEpisodes($);
-
-	  	resolve($.html());
-	  }
-	});
-	//resolve("epis");
-	},(Math.random()*process.env.WAITTIME))
-  });
 }
