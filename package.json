@@ -9,7 +9,8 @@
     "json_merger": "latest",
     "mongodb": "^2.2.27",
     "node-couchdb": "^1.1.1",
-    "request": "latest"
+    "request": "latest",
+    "http":"latest"
   },
   "engine": {
     "node": "*",
