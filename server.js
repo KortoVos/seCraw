@@ -68,6 +68,7 @@ app.get('/scrape', function(req, res){
 })
 
 function search(){
+  try{
   if (!db) {
     initDb(function(err){});
   }
@@ -114,6 +115,10 @@ function search(){
   }else {
     console.log('Mongo connection error');
   }
+  }catch(err){
+    console.log('\x1b[31m',"error grabbing:" + season.nr);
+    console.log(err);
+    }
 }
 
 app.get('/getNewSerials', function(req, res){
