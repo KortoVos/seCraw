@@ -18,7 +18,7 @@ function getSiteMultiTry(url,tryNr){
 		if(tryNr > 0){
 			setTimeout(function() {
 				console.log("request: "+url);
-				request({"url":url}, function(error, response, html){
+				request({"url":url,pool: {maxSockets: 1}}, function(error, response, html){
 				    if(!error){
 				    	var $ = cheerio.load(html);
 				    	
