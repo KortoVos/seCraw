@@ -6,10 +6,7 @@ var express = require('express'),
   analyse = require('./analyse.js'),
   allSerials = require('./allSerials.js');
 
-var searchMode = 0;
-
-//var MongoClient = require('mongodb').MongoClient;
-
+//var searchMode = 0;
 
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 80,
     ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1',
