@@ -10,7 +10,7 @@ var express = require('express'),
 var searchMode = 0;
 
 //var MongoClient = require('mongodb').MongoClient;
-global.agent = new http.Agent({ maxSockets : 1 });
+global.agent = new http.Agent({ maxSockets : 4 });
 
 
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 80,
