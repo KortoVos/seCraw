@@ -29,7 +29,7 @@ function getSiteMultiTry(url,tryNr){
 				    	});
 				    }
 				});
-			},(Math.random()*1000))
+			},(Math.random()*process.env.WAITTIME))
 		}else{
 			console.error('Failed to Load!', error);
 			resolve("");

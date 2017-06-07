@@ -123,6 +123,6 @@ function getEpisodesByUrl(url){
 	  }
 	});
 	//resolve("epis");
-	},(Math.random()*10000))
+	},(Math.random()*process.env.WAITTIME))
   });
 }
