@@ -6,7 +6,10 @@ var express = require('express'),
   analyse = require('./analyse.js'),
   allSerials = require('./allSerials.js');
 
-//var searchMode = 0;
+var searchMode = 0;
+
+//var MongoClient = require('mongodb').MongoClient;
+
 
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 80,
     ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1',
@@ -114,8 +117,8 @@ function search(){
   }
   }catch(err){
     console.log('\x1b[31m',"error grabbing:" + season.nr);
-    console.log(err);
-    }
+    console.log(err)
+  }
 }
 
 app.get('/getNewSerials', function(req, res){
