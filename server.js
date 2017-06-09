@@ -3,14 +3,14 @@ var express = require('express'),
   request = require('request'),
   cheerio = require('cheerio'),
   app     = express(),
-  http = require('http'),
+  http = require('https'),
   analyse = require('./analyse.js'),
   allSerials = require('./allSerials.js');
 
 var searchMode = 0;
 
 //var MongoClient = require('mongodb').MongoClient;
-global.agent = new http.Agent({ maxSockets : 4 });
+global.agent = new https.Agent({ maxSockets : 4 });
 
 
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 80,
