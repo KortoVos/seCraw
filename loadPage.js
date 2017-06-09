@@ -20,8 +20,9 @@ function getSiteMultiTry(url,tryNr){
 				console.log("request: "+url);
 				request({"url":url,"agent":global.agent}, function(error, response, html){
 				    if(!error){
+				    	console.log('\x1b[32m',"request loaded:" + url);
 				    	var $ = cheerio.load(html);
-				    	console.log('\x1b[31m',"sucsesfully loaded:" + url);
+				    	console.log('\x1b[32m',"cheerio loaded:" + url);
 
 				    	resolve($);
 				    }else{
