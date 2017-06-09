@@ -21,10 +21,11 @@ function getSiteMultiTry(url,tryNr){
 				request({"url":url,"agent":global.agent}, function(error, response, html){
 				    if(!error){
 				    	var $ = cheerio.load(html);
-				    	
+				    	console.log('\x1d[31m',"sucsesfully loaded:" + url);
+
 				    	resolve($);
 				    }else{
-				    	console.warn(`Danger ${url}! Danger! ${tryNr} trys Remain!`);
+				    	console.warn(`Danger " ${url} " Danger! ${tryNr} trys Remain!`);
 				    	getSiteMultiTry(url,tryNr-1).then(function(result){
 				    		resolve(result);
 				    	});
