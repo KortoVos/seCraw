@@ -26,6 +26,7 @@ function getSiteMultiTry(url,tryNr){
 				    	resolve($);
 				    }else{
 				    	console.warn(`Danger " ${url} " Danger! ${tryNr} trys Remain!`);
+				    	console.warn(error);
 				    	getSiteMultiTry(url,tryNr-1).then(function(result){
 				    		resolve(result);
 				    	});
