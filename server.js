@@ -80,7 +80,7 @@ function search(){
       console.log("searching url2: %s",result[0].url);
       
       analyse.getSerial(result[0]).then(function(res){
-        console.dir(res);
+        //console.dir(res);
         col.findAndModify(
           {_id: result[0]._id}, // query
           [['_id','asc']],  // sort order
@@ -102,8 +102,11 @@ function search(){
             if (err){
               console.warn(err.message);  // returns error if no matching object found
             }else{
-               console.dir(object);
+               //console.dir(object);
+
+               console.log("Added" + res._id)
             }
+            res = {};
             search();
           }
         );
