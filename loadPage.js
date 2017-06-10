@@ -22,7 +22,7 @@ function getSiteMultiTry(url,tryNr){
 				    if(!error){
 				    	console.log('\x1b[32m',"request loaded:" + url);
 				    	var $ = cheerio.load(html);
-				    	console.log('\x1b[32m',"cheerio loaded:" + url);
+				    	//console.log('\x1b[32m',"cheerio loaded:" + url);
 
 				    	resolve($);
 				    }else{
