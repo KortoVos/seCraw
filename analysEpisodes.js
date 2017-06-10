@@ -35,12 +35,12 @@ function getEpisodesWhenSeUrl($){ //Gets called when the craped link goes to the
 				  		var singlePromise2 = new Promise((resolve, reject) => {
 					  		var upUrl = 'https://bs.to/'+$(ele).first().attr('href');
 					  		var fakeUrl = {}
-					  		/*
-					  		pageLoader.getSite(upUrl).then(function($){
-								fakeUrl = $('.hoster-player').attr('href');
+					  		
+					  		//pageLoader.getSite(upUrl).then(function($){
+							//	fakeUrl = $('.hoster-player').attr('href');
 								resolve({"bsUploadLink":upUrl,"fakeUrl":fakeUrl});
-							});
-							*/
+							//});
+							
 							
 						});
 				  		promisesArray2.push(singlePromise2);
@@ -82,12 +82,12 @@ function getEpisodesWhenEpUrl($){ //Gets called when the craped link goes to the
 				  		var singlePromise2 = new Promise((resolve, reject) => {
 					  		var upUrl = 'https://bs.to/'+$(ele).first().attr('href');
 					  		var fakeUrl = {}
-					  		/*
-					  		pageLoader.getSite(upUrl).then(function($){
-								fakeUrl = $('.hoster-player').attr('href');
+					  		
+					  		//pageLoader.getSite(upUrl).then(function($){
+							//	fakeUrl = $('.hoster-player').attr('href');
 								resolve({"bsUploadLink":upUrl,"fakeUrl":fakeUrl});
-							});
-							*/
+							//});
+							
 							
 						});
 				  		promisesArray2.push(singlePromise2);
