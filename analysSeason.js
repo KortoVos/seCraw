@@ -36,7 +36,7 @@ function getSeason($){
 							episodes.getEpisodes(result).then(function(result){
 								season.episodes = result;
 
-		    					console.log('\x1b[31m',"Got Season:" + season.nr);
+		    					console.log('\x1b[32m',"Got Season:" + season.nr);
 								resolve(season);
 							});
 						});

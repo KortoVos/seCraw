@@ -99,15 +99,12 @@ function search(){
           }, // replacement, replaces only the field "hi"
           {}, // options
           function(err, object) {
-              setTimeout(function() {
-                if (err){
-                  console.warn(err.message);  // returns error if no matching object found
-                }else{
-                   console.dir(object);
-                }
-                search();
-              },(Math.random()*10000))
-              
+            if (err){
+              console.warn(err.message);  // returns error if no matching object found
+            }else{
+               console.dir(object);
+            }
+            search();
           }
         );
       }, err => {
