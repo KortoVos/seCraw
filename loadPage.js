@@ -17,10 +17,10 @@ function getSiteMultiTry(url,tryNr){
 	return new Promise((resolve, reject) => {
 		if(tryNr > 0){
 			setTimeout(function() {
-				console.log("request: "+url);
+				//console.log("request: "+url);
 				request({"url":url,"agent":global.agent}, function(error, response, html){
 				    if(!error){
-				    	console.log('\x1b[32m',"request loaded:" + url);
+				    	//console.log('\x1b[32m',"request loaded:" + url);
 				    	var $ = cheerio.load(html);
 				    	//console.log('\x1b[32m',"cheerio loaded:" + url);
 

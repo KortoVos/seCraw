@@ -47,7 +47,7 @@ function getEpisodesWhenSeUrl($){ //Gets called when the craped link goes to the
 				  	}).get();
 				  	Promise.all(promisesArray2).then((result2) => {
 				  		episode.stream = result2;
-				  		console.log('\x1b[31m',"Got ep:" + episode.nr);
+				  		console.log('\x1b[31m',"Got ep:" + episode.updateLink);
 					    resolve(episode);
 					});
 					
