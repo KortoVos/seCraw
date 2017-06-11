@@ -71,7 +71,7 @@ var initDb = function(callback) {
 
 app.get('/scrape', function(req, res){
   res.send("startet");
-  myEmitter.emit('event');
+  myEmitter.emit('scrapeSerial');
 })
 
 myEmitter.on('scrapeSerial', () => {
@@ -117,7 +117,7 @@ function search(){
                console.log("Added" + res._id)
             }
             res = {};
-            myEmitter.emit('event');
+            myEmitter.emit('scrapeSerial');
           }
         );
       }, err => {
