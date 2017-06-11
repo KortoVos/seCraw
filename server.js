@@ -6,13 +6,11 @@ var express = require('express'),
   https = require('https'),
   analyse = require('./analyse.js'),
   allSerials = require('./allSerials.js');
-var EventEmitter = require('events');
 
-var MyEmitter extends EventEmitter {}
+var events = require('events');
+var myEmitter = new events.EventEmitter();
 
 var searchMode = 0;
-
-const myEmitter = new MyEmitter();
 
 //var MongoClient = require('mongodb').MongoClient;
 global.agent = new https.Agent({ maxSockets : process.env.MAXSOCKETS });
