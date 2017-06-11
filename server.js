@@ -74,8 +74,7 @@ app.get('/scrape', function(req, res){
 
 myEmitter.on('scrapeSerial', () => {
   console.log('an event occurred! Next scrape will start!');
-  var sear = search();
-  sear.remove();
+  search();
 });
 
 function search(){
