@@ -33,10 +33,10 @@ function getSerial(serial){
 	        serial.img = data.children().first().attr("src");
 			  })
 		    
-			  seasons.getSeason($).then(function(result){
-			    serial.seasons = result;
+			  //seasons.getSeason($).then(function(result){
+			  //  serial.seasons = result;
 			    resolve(serial);
-			  });
+			  //});
 			}
 		});
 		
