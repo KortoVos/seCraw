@@ -43,7 +43,8 @@ if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
 }
 
 var db = null,
-    dbDetails = new Object();
+    dbDetails = new Object(),
+    col = null;
 
 var initDb = function(callback) {
   if (mongoURL == null) return;
@@ -61,7 +62,7 @@ var initDb = function(callback) {
     dbDetails.databaseName = db.databaseName;
     dbDetails.url = mongoURLLabel;
     dbDetails.type = 'MongoDB';
-
+    col = db.collection('serials');
     console.log('Connected to MongoDB at: %s', mongoURL);
   });
 };
@@ -83,7 +84,6 @@ function search(){
     initDb(function(err){});
   }
   if (db) {
-    var col = db.collection('serials');
     col.find({}, {limit:1}).sort({latestCheck:1}).toArray(function(err, result) {
       console.log("searching url2: %s",result[0].url);
       
@@ -143,7 +143,6 @@ app.get('/getNewSerials', function(req, res){
     result.map((el,i) => { 
       setTimeout(function() {
         //console.log(el );
-        var col = db.collection('serials');
         col.insert(el);
       },(Math.random()*10000))
     });
@@ -157,7 +156,6 @@ app.get('/', function (req, res) {
     initDb(function(err){});
   }
   if (db) {
-    var col = db.collection('serials');
     col.find({}).sort({latestCheck:1}).toArray(function(err, result) {
       res.send(result);
     });
@@ -169,7 +167,6 @@ app.get('/delAll', function (req, res) {
     initDb(function(err){});
   }
   if (db) {
-    var col = db.collection('serials');
     col.remove({},function(err, removed){
       res.send("dell all");
     });
