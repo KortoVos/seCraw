@@ -6,8 +6,13 @@ var express = require('express'),
   https = require('https'),
   analyse = require('./analyse.js'),
   allSerials = require('./allSerials.js');
+const EventEmitter = require('events');
+
+class MyEmitter extends EventEmitter {}
 
 var searchMode = 0;
+
+const myEmitter = new MyEmitter();
 
 //var MongoClient = require('mongodb').MongoClient;
 global.agent = new https.Agent({ maxSockets : process.env.MAXSOCKETS });
@@ -66,8 +71,13 @@ var initDb = function(callback) {
 
 app.get('/scrape', function(req, res){
   res.send("startet");
-  search();
+  myEmitter.emit('event');
 })
+
+myEmitter.on('scrapeSerial', () => {
+  console.log('an event occurred! Next scrape will start!');
+  search();
+});
 
 function search(){
   try{
@@ -107,6 +117,7 @@ function search(){
                console.log("Added" + res._id)
             }
             res = {};
+            myEmitter.emit('event');
           }
         );
       }, err => {
