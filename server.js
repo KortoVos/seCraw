@@ -114,8 +114,7 @@ function search(){
 
                console.log("Added" + res._id)
             }
-            res.remove();
-            result.remove();
+            
             myEmitter.emit('scrapeSerial');
           }
         );

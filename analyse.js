@@ -9,7 +9,7 @@ module.exports = {
 function getSerial(serial){
 	return new Promise((resolve, reject) => {
 		console.log("start with Serial:");
-		console.dir(serial);
+		console.dir(serial._id);
   	//var serial = {};
     request(serial.url, function(error, response, html){
 	    if(!error){
