@@ -16,7 +16,6 @@ function getSite(url){
 function getSiteMultiTry(url,tryNr){
 	return new Promise((resolve, reject) => {
 		if(tryNr > 0){
-			setTimeout(function() {
 				//console.log("request: "+url);
 				request({"url":url,"agent":global.agent}, function(error, response, html){
 				    if(!error){
@@ -33,7 +32,6 @@ function getSiteMultiTry(url,tryNr){
 				    	});
 				    }
 				});
-			},(Math.random()*process.env.WAITTIME))
 		}else{
 			console.error('Failed to Load!', error);
 			resolve("");
