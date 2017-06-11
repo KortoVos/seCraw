@@ -107,7 +107,6 @@ function search(){
                console.log("Added" + res._id)
             }
             res = {};
-            search();
           }
         );
       }, err => {
