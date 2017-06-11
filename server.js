@@ -6,9 +6,9 @@ var express = require('express'),
   https = require('https'),
   analyse = require('./analyse.js'),
   allSerials = require('./allSerials.js');
-const EventEmitter = require('events');
+var EventEmitter = require('events');
 
-class MyEmitter extends EventEmitter {}
+var MyEmitter extends EventEmitter {}
 
 var searchMode = 0;
 
