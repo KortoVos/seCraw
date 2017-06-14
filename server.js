@@ -85,8 +85,8 @@ function search(){
   if (db) {
     col.find({}, {limit:1}).sort({latestCheck:1}).toArray(function(err, result) {
       //console.log("searching url2: %s",result[0].url);
-      
-      require('./analyse.js').getSerial(result[0]).then(function(res){
+      var analyse = require('./analyse.js');
+      analyse.getSerial(result[0]).then(function(res){
         //console.dir(res);
         col.findAndModify(
           {_id: result[0]._id}, // query
