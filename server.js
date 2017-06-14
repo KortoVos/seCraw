@@ -4,6 +4,7 @@ var express = require('express'),
   cheerio = require('cheerio'),
   app     = express(),
   https = require('https'),
+  analyse = require('./analyse.js'),
   allSerials = require('./allSerials.js');
 
 var events = require('events');
@@ -85,7 +86,7 @@ function search(){
   if (db) {
     col.find({}, {limit:1}).sort({latestCheck:1}).toArray(function(err, result) {
       //console.log("searching url2: %s",result[0].url);
-      var analyse = require('./analyse.js');
+      
       analyse.getSerial(result[0]).then(function(res){
         //console.dir(res);
         col.findAndModify(
