@@ -5,7 +5,22 @@ module.exports = {
 	getSerial:getSerial
 }
 
+function getSerial(serial){
+	return new Promise((resolve, reject) => {
+		console.log("start with Serial:");
+		console.dir(serial._id);
+        serial.latestCheck=	Date.now();
+        serial.title 		= 	"test Title"; 
+        serial.description ="Wunderbare beschreibung";  
+        serial.genres 	= 	"bestes Genre"; 
+        //var release = data.children().next().next().children().next().html().match('<em>(.*?) - (.*?)</').splice(1,2);
+        serial.release  = {"start":"2004","end":"2009"}
 
+		resolve(serial);
+	});
+}
+
+/*
 function getSerial(serial){
 	return new Promise((resolve, reject) => {
 		console.log("start with Serial:");
@@ -42,3 +57,4 @@ function getSerial(serial){
 		
 	});
 }
+*/
