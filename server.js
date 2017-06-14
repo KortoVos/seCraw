@@ -85,7 +85,7 @@ function search(){
   }
   if (db) {
     col.find({}, {limit:1}).sort({latestCheck:1}).toArray(function(err, result) {
-      console.log("searching url2: %s",result[0].url);
+      //console.log("searching url2: %s",result[0].url);
       
       analyse.getSerial(result[0]).then(function(res){
         //console.dir(res);

@@ -7,8 +7,13 @@ module.exports = {
 
 function getSerial(serial){
 	return new Promise((resolve, reject) => {
-		console.log("start with Serial:");
-		console.dir(serial._id);
+		pageLoader.getSite(serial.url).then(function(result){
+			console.log("Page loaded")
+		});
+
+
+		//console.log("start with Serial:");
+		//console.dir(serial._id);
         serial.latestCheck=	Date.now();
         serial.title 		= 	"test Title"; 
         serial.description ="Wunderbare beschreibung";  
