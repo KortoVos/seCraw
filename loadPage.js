@@ -1,6 +1,3 @@
-var request = require('request');
-var cheerio = require('cheerio');
-
 module.exports = {
 	getSite:getSite
 }
@@ -17,9 +14,11 @@ function getSiteMultiTry(url,tryNr){
 	return new Promise((resolve, reject) => {
 		if(tryNr > 0){
 				//console.log("request: "+url);
+				var request = require('request');
 				request({"url":url,"agent":global.agent}, function(error, response, html){
 				    if(!error){
 				    	//console.log('\x1b[32m',"request loaded:" + url);
+				    	var cheerio = require('cheerio');
 				    	var $ = cheerio.load(html);
 				    	//console.log('\x1b[32m',"cheerio loaded:" + url);
 
