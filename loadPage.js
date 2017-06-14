@@ -5,6 +5,7 @@ module.exports = {
 function getSite(url){
 	return new Promise((resolve, reject) => {
 		getSiteMultiTry(url,10).then(function(result){
+			url = null;
 			resolve(result);
 		});
 	});
@@ -16,6 +17,7 @@ function getSiteMultiTry(url,tryNr){
 				//console.log("request: "+url);
 				var request = require('request');
 				request({"url":url,"agent":global.agent}, function(error, response, html){
+					url = null;
 				    if(!error){
 				    	//console.log('\x1b[32m',"request loaded:" + url);
 				    	var cheerio = require('cheerio');
