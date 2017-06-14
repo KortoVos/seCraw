@@ -8,9 +8,9 @@ module.exports = {
 function getSerial(serial){
 	return new Promise((resolve, reject) => {
 		var pageLoader= require('./loadPage.js');
-		pageLoader.getSite(serial.url).then(function(result){
+		/*pageLoader.getSite(serial.url).then(function(result){
 			console.log("Page loaded")
-		});
+		});*/
 
 
 		//console.log("start with Serial:");
