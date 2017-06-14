@@ -4,6 +4,13 @@ module.exports = {
 
 function getSite(url){
 	return new Promise((resolve, reject) => {
+		resolve("result");
+	});
+}
+/*
+
+function getSite(url){
+	return new Promise((resolve, reject) => {
 		getSiteMultiTry(url,10).then(function(result){
 			url = null;
 			resolve(result);
@@ -38,4 +45,4 @@ function getSiteMultiTry(url,tryNr){
 			resolve("");
 		}
 	});
-}
+}*/
