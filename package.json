@@ -5,12 +5,13 @@
   "main": "server.js",
   "dependencies": {
     "cheerio": "latest",
+    "dotenv": "^4.0.0",
     "express": "latest",
+    "https": "latest",
     "json_merger": "latest",
     "mongodb": "^2.2.27",
     "node-couchdb": "^1.1.1",
-    "request": "latest",
-    "https":"latest"
+    "request": "latest"
   },
   "engine": {
     "node": "*",

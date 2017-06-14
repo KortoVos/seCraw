@@ -5,7 +5,8 @@ var express = require('express'),
   app     = express(),
   https = require('https'),
   analyse = require('./analyse.js'),
-  allSerials = require('./allSerials.js');
+  allSerials = require('./allSerials.js'),
+  require('dotenv').config();
 
 var events = require('events');
 var myEmitter = new events.EventEmitter();
