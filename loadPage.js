@@ -24,7 +24,7 @@ function getSiteMultiTry(url,tryNr){
 				    	//console.log('\x1b[32m',"cheerio loaded:" + url);
 				    	cheerio = null;
 				    	request = null;
-				    	resolve($);
+				    	resolve("$");
 				    }else{
 				    	console.warn(`Danger " ${url} " Danger! ${tryNr} trys Remain!`);
 				    	console.warn(error);
