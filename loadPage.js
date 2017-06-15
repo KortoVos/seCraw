@@ -4,15 +4,7 @@ module.exports = {
 
 function getSite(url){
 	return new Promise((resolve, reject) => {
-		resolve("result");
-	});
-}
-/*
-
-function getSite(url){
-	return new Promise((resolve, reject) => {
 		getSiteMultiTry(url,10).then(function(result){
-			url = null;
 			resolve(result);
 		});
 	});
@@ -30,7 +22,8 @@ function getSiteMultiTry(url,tryNr){
 				    	var cheerio = require('cheerio');
 				    	var $ = cheerio.load(html);
 				    	//console.log('\x1b[32m',"cheerio loaded:" + url);
-
+				    	cheerio = null;
+				    	request = null;
 				    	resolve($);
 				    }else{
 				    	console.warn(`Danger " ${url} " Danger! ${tryNr} trys Remain!`);
@@ -45,4 +38,4 @@ function getSiteMultiTry(url,tryNr){
 			resolve("");
 		}
 	});
-}*/
+}

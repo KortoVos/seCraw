@@ -9,6 +9,7 @@ function getSerial(serial){
 	return new Promise((resolve, reject) => {
 		var pageLoader= require('./loadPage.js');
 		pageLoader.getSite(serial.url).then(function(result){
+			result = null;
 			console.log("Page loaded")
 		});
 
