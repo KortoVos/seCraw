@@ -9,7 +9,7 @@
     "express": "latest",
     "https": "latest",
     "json_merger": "latest",
-    "mongodb": "^2.2.27",
+    "mongodb": "^2.2.28",
     "node-couchdb": "^1.1.1",
     "request": "latest"
   },

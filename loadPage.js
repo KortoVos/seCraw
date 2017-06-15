@@ -1,5 +1,6 @@
 module.exports = {
-	getSite:getSite
+	getSite:getSite,
+	getSiteSingleTry:getSiteSingleTry
 }
 
 function getSite(url){
@@ -37,5 +38,21 @@ function getSiteMultiTry(url,tryNr){
 			console.error('Failed to Load!', error);
 			resolve("");
 		}
+	});
+}
+
+function getSiteSingleTry(url){
+	return new Promise((resolve, reject) => {
+		//console.log("request: "+url);
+		var request = require('request');
+		request({"url":url,"agent":global.agent}, function(error, response, html){
+			url = null;
+		    if(!error){
+		    	
+		    	resolve("$");
+		    }else{
+		    	console.warn(`Danger " ${url} " Danger!`);
+		    }
+		});
 	});
 }
