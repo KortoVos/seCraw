@@ -114,7 +114,8 @@ function search(){
             }else{
                //console.dir(object);
 
-               console.log("Added" + res._id)
+               //console.log("Added " + res._id)
+               console.log('\x1b[32m',"Added:" + res._id);
             }
             
             myEmitter.emit('scrapeSerial');
