@@ -14,6 +14,8 @@ var myEmitter = new events.EventEmitter();
 
 var searchMode = 0;
 
+var runScrape = false;
+
 //var MongoClient = require('mongodb').MongoClient;
 global.agent = new https.Agent({ maxSockets : process.env.MAXSOCKETS });
 
@@ -117,8 +119,9 @@ function search(){
                //console.log("Added " + res._id)
                console.log('\x1b[32m',"Added:" + res._id);
             }
-            
-            myEmitter.emit('scrapeSerial');
+            if(runScrape){
+              myEmitter.emit('scrapeSerial');
+            }
           }
         );
       }, err => {
