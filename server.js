@@ -183,7 +183,7 @@ app.get('/', function (req, res) {
   if (db) {
     col.find({}).sort({latestCheck:1}).toArray(function(err, result) {
       var html = result.map(function(bje){
-        return bje.title;
+        return '<div style="margin:4px;">' + bje.title + "</div>";
       })
       res.send(html);
     });
