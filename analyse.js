@@ -15,9 +15,8 @@ function getSerial(serial){
 			//console.log("Page loaded");
 			serial.latestCheck=	Date.now();
 	        serial.title 	  =data.children().first().text().match('\\t(.*?)\\n')[0].trim(); 
-	        serial.description =data.children().next().children().html();  
-	        serial.genres 	= 	data.children().next().next().children().children().next().html().split('</span>').map(obj=>obj.split('>')[1]).filter((obj)=>obj != null); 
-	        
+	        serial.description="Wunderbare beschreibung";  
+	        serial.genres 	  ="bestes Genre"; 
 	        //var release = data.children().next().next().children().next().html().match('<em>(.*?) - (.*?)</').splice(1,2);
 	        serial.release  = {"start":"2004","end":"2009"}
 
