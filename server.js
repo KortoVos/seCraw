@@ -84,7 +84,11 @@ app.get('/stopscrape', function(req, res){
   runScrape = false;
 })
 
-setInterval(function() { console.log("setInterval: It's been one second!"); myEmitter.emit('scrapeSerial'); }, 1000);
+setInterval(function() { 
+  console.log("setInterval: It's been one second!"); 
+  console.log(process.memoryUsage());
+  myEmitter.emit('scrapeSerial'); 
+}, 1000);
 
 
 myEmitter.on('scrapeSerial', () => {
