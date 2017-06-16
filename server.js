@@ -74,7 +74,13 @@ var initDb = function(callback) {
 
 app.get('/scrape', function(req, res){
   res.send("startet");
+  runScrape = true;
   myEmitter.emit('scrapeSerial');
+})
+
+app.get('/stopscrape', function(req, res){
+  res.send("stopping");
+  runScrape = false;
 })
 
 myEmitter.on('scrapeSerial', () => {
