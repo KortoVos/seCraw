@@ -90,7 +90,7 @@ setInterval(function() {
     //console.log('\x1b[32m',process.memoryUsage());
   
   myEmitter.emit('scrapeSerial'); 
-}, 1000);
+}, process.env.WAITTIME);
 
 
 myEmitter.on('scrapeSerial', () => {
