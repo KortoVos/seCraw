@@ -12,8 +12,6 @@ var express = require('express'),
 var events = require('events');
 var myEmitter = new events.EventEmitter();
 
-var searchCount = 0;
-var searchMaxCount = 3;
 
 var runScrape = false;
 
@@ -84,17 +82,21 @@ app.get('/stopscrape', function(req, res){
   runScrape = false;
 })
 
+var heapCounter = 0;
 setInterval(function() { 
-  console.log("setInterval: It's been one second!"); 
-  console.log(process.memoryUsage());
+  if(heapCounter >= 10){
+    console.log("setInterval: It's been 10 second!"); 
+    console.log(process.memoryUsage());
+    heapCounter = 0;
+  }
   myEmitter.emit('scrapeSerial'); 
 }, 1000);
 
 
 myEmitter.on('scrapeSerial', () => {
   //console.log('an event occurred! Next scrape will start!');
-  if(searchCount < searchMaxCount){
-    searchCount += 1;
+  if(runScrape){
+    
     search();
   }
 });
@@ -135,7 +137,6 @@ function search(){
 
                //console.log("Added " + res._id)
                console.log('\x1b[32m',"Added:" + res._id);
-               searchCount += -1;
             }
             if(runScrape){
               //myEmitter.emit('scrapeSerial');
