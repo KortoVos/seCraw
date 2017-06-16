@@ -88,7 +88,7 @@ setInterval(function() {
     console.log(process.memoryUsage());
     //global.gc();
     //console.log('\x1b[32m',process.memoryUsage());
-  }
+  
   myEmitter.emit('scrapeSerial'); 
 }, 1000);
 
