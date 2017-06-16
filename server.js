@@ -12,7 +12,8 @@ var express = require('express'),
 var events = require('events');
 var myEmitter = new events.EventEmitter();
 
-var searchMode = 0;
+var searchCount = 0;
+var searchMaxCount = 3;
 
 var runScrape = false;
 
@@ -85,7 +86,10 @@ app.get('/stopscrape', function(req, res){
 
 myEmitter.on('scrapeSerial', () => {
   //console.log('an event occurred! Next scrape will start!');
-  search();
+  if(searchCount < searchMaxCount){
+    searchCount += 1;
+    search();
+  }
 });
 
 function search(){
@@ -124,6 +128,7 @@ function search(){
 
                //console.log("Added " + res._id)
                console.log('\x1b[32m',"Added:" + res._id);
+               searchCount += -1;
             }
             if(runScrape){
               myEmitter.emit('scrapeSerial');
