@@ -84,6 +84,7 @@ app.get('/stopscrape', function(req, res){
 
 var heapCounter = 0;
 setInterval(function() { 
+  heapCounter +=1;
   if(heapCounter >= 10){
     console.log("setInterval: It's been 10 second!"); 
     console.log(process.memoryUsage());
