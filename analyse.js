@@ -24,7 +24,11 @@ function getSerial(serial){
 	        serial.director = 	data.children().next().next().children().next().next().next().next().children().next().html().split('>').filter(o=>o.match(("(.*?),</span|</span"))).map(o=>o.split(',')[0]).map(o=>o.split('<')[0]);
 	        serial.author 	=   data.children().next().next().children().next().next().next().next().next().children().next().html().split('>').filter(o=>o.match(("(.*?),</span|</span"))).map(o=>o.split(',')[0]).map(o=>o.split('<')[0]);
 		    serial.img = data.children().first().attr("src");
-			resolve(serial);
+			
+			seasons.getSeason($).then(function(result){
+				serial.seasons = result;
+			    resolve(serial);
+			});
 		});
 
 
