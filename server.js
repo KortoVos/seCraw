@@ -88,6 +88,9 @@ setInterval(function() {
   if(heapCounter >= 5){
     //console.log("setInterval: It's been 10 second!"); 
     console.log(process.memoryUsage());
+    global.gc();
+    console.log('\x1b[32m',process.memoryUsage());
+
     heapCounter = 0;
   }
   myEmitter.emit('scrapeSerial'); 
