@@ -28,7 +28,7 @@ function getSiteMultiTry(url,tryNr){
 			    	https = null;
 			    	agent = null;
 			    	request = null;
-			    	resolve("$");
+			    	resolve($);
 			    }else{
 			    	console.warn(`Danger " ${url} " Danger! ${tryNr} trys Remain!`);
 			    	console.warn(error);
