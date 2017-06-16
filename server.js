@@ -185,7 +185,7 @@ app.get('/', function (req, res) {
         return '<a href="'+bje.id+'"><div style="margin:4px;">' + bje.title + "</div></a>";
       });
       
-    res.send(html);
+    res.send(JSON.stringify(html));
   }
 });
 
