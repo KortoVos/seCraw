@@ -82,16 +82,12 @@ app.get('/stopscrape', function(req, res){
   runScrape = false;
 })
 
-var heapCounter = 0;
 setInterval(function() { 
-  heapCounter +=1;
-  if(heapCounter >= 5){
+
     //console.log("setInterval: It's been 10 second!"); 
     console.log(process.memoryUsage());
     //global.gc();
     //console.log('\x1b[32m',process.memoryUsage());
-
-    heapCounter = 0;
   }
   myEmitter.emit('scrapeSerial'); 
 }, 1000);
