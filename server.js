@@ -84,6 +84,9 @@ app.get('/stopscrape', function(req, res){
   runScrape = false;
 })
 
+setInterval(function() { console.log("setInterval: It's been one second!"); myEmitter.emit('scrapeSerial'); }, 1000);
+
+
 myEmitter.on('scrapeSerial', () => {
   //console.log('an event occurred! Next scrape will start!');
   if(searchCount < searchMaxCount){
@@ -131,7 +134,7 @@ function search(){
                searchCount += -1;
             }
             if(runScrape){
-              myEmitter.emit('scrapeSerial');
+              //myEmitter.emit('scrapeSerial');
             }
           }
         );

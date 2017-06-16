@@ -16,7 +16,7 @@ function getSiteMultiTry(url,tryNr){
 		if(tryNr > 0){
 			//console.log("request: "+url);
 			var https = require('https');
-			var agent = new https.Agent({ maxSockets : process.env.MAXSOCKETS });
+			var agent = new https.Agent({ maxSockets:1});
 			var request = require('request');
 			request({"url":url,"agent":agent}, function(error, response, html){
 				url = null;
