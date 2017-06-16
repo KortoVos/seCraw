@@ -86,7 +86,7 @@ var heapCounter = 0;
 setInterval(function() { 
   heapCounter +=1;
   if(heapCounter >= 5){
-    console.log("setInterval: It's been 10 second!"); 
+    //console.log("setInterval: It's been 10 second!"); 
     console.log(process.memoryUsage());
     heapCounter = 0;
   }

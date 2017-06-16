@@ -9,23 +9,24 @@ function getSerial(serial){
 	return new Promise((resolve, reject) => {
 		var pageLoader= require('./loadPage.js');
 		pageLoader.getSite(serial.url).then(function(result){
-			
+			var data = $(result);
+			result = null;
 			//global.gc();
 			//console.log("Page loaded");
-			result = null;
+			serial.latestCheck=	Date.now();
+	        serial.title 	  ="test Title"; 
+	        serial.description="Wunderbare beschreibung";  
+	        serial.genres 	  ="bestes Genre"; 
+	        //var release = data.children().next().next().children().next().html().match('<em>(.*?) - (.*?)</').splice(1,2);
+	        serial.release  = {"start":"2004","end":"2009"}
+
+			resolve(serial);
 		});
 
 
 		//console.log("start with Serial:");
 		//console.dir(serial._id);
-        serial.latestCheck=	Date.now();
-        serial.title 	  ="test Title"; 
-        serial.description="Wunderbare beschreibung";  
-        serial.genres 	  ="bestes Genre"; 
-        //var release = data.children().next().next().children().next().html().match('<em>(.*?) - (.*?)</').splice(1,2);
-        serial.release  = {"start":"2004","end":"2009"}
-
-		resolve(serial);
+        
 	});
 }
 
