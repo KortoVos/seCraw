@@ -181,10 +181,13 @@ app.get('/', function (req, res) {
     initDb(function(err){});
   }
   if (db) {
-    var html = col.find({}).sort({latestCheck:1}).map(function(bje){
+    var htmlRes = col.find({}).sort({latestCheck:1}).map(function(bje){
         return '<a href="'+bje.id+'"><div style="margin:4px;">' + bje.title + "</div></a>";
+      }, 
+      function(err, docs) {
+        console.log(docs)
       });
-    console.log(html);
+    
     res.json("html");
     //res.send(JSON.stringify(html));
   }
