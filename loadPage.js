@@ -44,11 +44,15 @@ function getSiteMultiTry(url,tryNr){
 function getSiteSingleTry(url){
 	return new Promise((resolve, reject) => {
 		//console.log("request: "+url);
+		var https = require('https');
+		var agent = new https.Agent({ maxSockets : process.env.MAXSOCKETS });
 		var request = require('request');
-		request({"url":url,"agent":global.agent}, function(error, response, html){
+		request({"url":url,"agent":agent}, function(error, response, html){
 			url = null;
 		    if(!error){
-		    	
+		    	https = null;
+		    	agent = null;
+		    	request = null;
 		    	resolve("$");
 		    }else{
 		    	console.warn(`Danger " ${url} " Danger!`);
