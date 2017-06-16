@@ -184,7 +184,8 @@ app.get('/', function (req, res) {
     var html = col.find({}).sort({latestCheck:1}).map(function(bje){
         return '<a href="'+bje.id+'"><div style="margin:4px;">' + bje.title + "</div></a>";
       });
-    res.json(html);
+    console.log(html);
+    res.json("html");
     //res.send(JSON.stringify(html));
   }
 });
