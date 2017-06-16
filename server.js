@@ -13,7 +13,7 @@ var events = require('events');
 var myEmitter = new events.EventEmitter();
 
 
-var runScrape = false;
+var runScrape = true;
 
 //var MongoClient = require('mongodb').MongoClient;
 global.agent = new https.Agent({ maxSockets : process.env.MAXSOCKETS });
@@ -85,7 +85,7 @@ app.get('/stopscrape', function(req, res){
 var heapCounter = 0;
 setInterval(function() { 
   heapCounter +=1;
-  if(heapCounter >= 10){
+  if(heapCounter >= 5){
     console.log("setInterval: It's been 10 second!"); 
     console.log(process.memoryUsage());
     heapCounter = 0;
@@ -137,7 +137,7 @@ function search(){
                //console.dir(object);
 
                //console.log("Added " + res._id)
-               console.log('\x1b[32m',"Added:" + res._id);
+               //console.log('\x1b[32m',"Added:" + res._id);
             }
             if(runScrape){
               //myEmitter.emit('scrapeSerial');

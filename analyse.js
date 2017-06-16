@@ -11,7 +11,7 @@ function getSerial(serial){
 		pageLoader.getSite(serial.url).then(function(result){
 			
 			//global.gc();
-			console.log("Page loaded");
+			//console.log("Page loaded");
 			result = null;
 		});
 
