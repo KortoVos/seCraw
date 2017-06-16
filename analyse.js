@@ -8,7 +8,7 @@ module.exports = {
 function getSerial(serial){
 	return new Promise((resolve, reject) => {
 		var pageLoader= require('./loadPage.js');
-		pageLoader.getSiteSingleTry(serial.url).then(function(result){
+		pageLoader.getSite(serial.url).then(function(result){
 			result = null;
 			global.gc()
 			console.log("Page loaded")
