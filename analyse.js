@@ -9,12 +9,12 @@ function getSerial(serial){
 	return new Promise((resolve, reject) => {
 		var pageLoader= require('./loadPage.js');
 		pageLoader.getSite(serial.url).then(function(result){
-			//var data = $(result);
+			var data = $(result);
 			result = null;
 			//global.gc();
 			//console.log("Page loaded");
 			serial.latestCheck=	Date.now();
-	        serial.title 	  ="test Title"; 
+	        serial.title 	  =data.children().first().text().match('\\t(.*?)\\n')[0].trim(); 
 	        serial.description="Wunderbare beschreibung";  
 	        serial.genres 	  ="bestes Genre"; 
 	        //var release = data.children().next().next().children().next().html().match('<em>(.*?) - (.*?)</').splice(1,2);
