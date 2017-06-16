@@ -181,9 +181,11 @@ app.get('/', function (req, res) {
     initDb(function(err){});
   }
   if (db) {
-    col.find({}).sort({latestCheck:1}).map( function(u) { return u.title; }).toArray(function(err, result) {
-      var html = result.
-      res.send(result);
+    col.find({}).sort({latestCheck:1}).toArray(function(err, result) {
+      var html = result.map(function(bje){
+        return bje.title;
+      })
+      res.send(html);
     });
   }
 });
