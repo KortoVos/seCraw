@@ -181,12 +181,11 @@ app.get('/', function (req, res) {
     initDb(function(err){});
   }
   if (db) {
-    col.find({}).sort({latestCheck:1}).toArray(function(err, result) {
-      var html = result.map(function(bje){
+    var html = col.find({}).sort({latestCheck:1}).map(function(bje){
         return '<a href="'+bje.id+'"><div style="margin:4px;">' + bje.title + "</div></a>";
-      })
-      res.send(html);
-    });
+      });
+      
+    res.send(html);
   }
 });
 
