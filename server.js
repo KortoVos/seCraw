@@ -7,13 +7,13 @@ var express = require('express'),
   analyse = require('./analyse.js'),
   allSerials = require('./allSerials.js');
 
- require('dotenv').config()
+ require('dotenv').config();
 
 var events = require('events');
 var myEmitter = new events.EventEmitter();
 
 
-var runScrape = true;
+var runScrape = false;
 
 //var MongoClient = require('mongodb').MongoClient;
 global.agent = new https.Agent({ maxSockets : process.env.MAXSOCKETS });
@@ -50,13 +50,15 @@ var db = null,
     col = null;
 
 var initDb = function(callback) {
-  if (mongoURL == null) return;
+  if (mongoURL == null) return 
+    else console.log("Mongo URL:"+mongoURL);
 
   var mongodb = require('mongodb');
   if (mongodb == null) return;
 
   mongodb.connect(mongoURL, function(err, conn) {
     if (err) {
+      console.warn("error while connection to Mongo:"+err);
       callback(err);
       return;
     }
