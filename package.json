@@ -11,6 +11,7 @@
     "json_merger": "latest",
     "mongodb": "^2.2.28",
     "node-couchdb": "^1.1.1",
+    "pug": "^2.0.0-rc.2",
     "request": "latest"
   },
   "engine": {

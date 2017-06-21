@@ -1,0 +1,8 @@
+html
+	head
+		title= title
+	body
+		ul
+			each val in message
+				a(href="s/"+val._id)
+					li=val.title

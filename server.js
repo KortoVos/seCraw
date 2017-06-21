@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 var express = require('express'),
   fs = require('fs'),
   request = require('request'),
@@ -5,11 +7,11 @@ var express = require('express'),
   app     = express(),
   https = require('https'),
   analyse = require('./analyse.js'),
-  allSerials = require('./allSerials.js');
+  allSerials = require('./allSerials.js'),
+  events = require('events');
 
- require('dotenv').config();
+app.set('view engine', 'pug')
 
-var events = require('events');
 var myEmitter = new events.EventEmitter();
 
 
@@ -92,13 +94,12 @@ setInterval(function() {
     //console.log('\x1b[32m',process.memoryUsage());
   
   myEmitter.emit('scrapeSerial'); 
-}, process.env.WAITTIME);
+}, process.env.WAITTIME || 1000);
 
 
 myEmitter.on('scrapeSerial', () => {
   //console.log('an event occurred! Next scrape will start!');
   if(runScrape){
-    
     search();
   }
 });
@@ -183,16 +184,25 @@ app.get('/', function (req, res) {
     initDb(function(err){});
   }
   if (db) {
-    var htmlRes = col.find({}).sort({latestCheck:1}).map(function(bje){
-        return '<a href="'+bje.id+'"><div style="margin:4px;">' + bje.title + "</div></a>";
-      }, 
-      function(err, docs) {
-        console.log("dochs" + docs)
+    //res.send("tesitng db");
+    var htmlRes = col.find({}).sort({latestCheck:1}).toArray(function (err, docs) {
+        //res.render("serialList",{title:"hello"});
+        res.render('index', { title: 'Hey', message: docs})
+        //res.send(JSON.stringify()
+        //console.log("docs: "+docs);
       });
-    console.log("htmlRes" + htmlRes)
-    res.json("html");
+    //console.log("htmlRes: " + htmlRes)
+    //res.json("html");
     //res.send(JSON.stringify(html));
   }
+});
+
+app.get('/s/:id', function (req, res, next) {
+  console.log("searching for %s",req.params.id)
+  col.find({_id:req.params.id}).toArray(function (err, docs) {
+    res.send(docs);
+  });
+  
 });
 
 app.get('/delAll', function (req, res) {
